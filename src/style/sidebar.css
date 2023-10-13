@@ -1,0 +1,13 @@
+/* Hide the desktop sidebar content on screens with a maximum width of 768px (tablet) */
+@media (max-width: 768px) {
+    .desktop-sidebar {
+        display: none;
+    }
+}
+
+/* Display the bottom navigation bar for screens with a maximum width of 768px (tablet) */
+@media (max-width: 768px) {
+    .bottom-nav {
+        display: block;
+    }
+}

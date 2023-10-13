@@ -1,0 +1,19 @@
+import React, { useState } from 'react'
+import Todo from './Todo'
+import InProgress from './InProgress'
+import Done from './Done'
+
+const Lists = () => {
+    
+    return (
+        <>
+         <section className="pl-24 pr-8 fixed mb-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+            <Todo />
+            <InProgress />
+            <Done />
+         </section>
+        </>
+    )
+}
+
+export default Lists
