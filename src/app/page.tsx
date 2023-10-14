@@ -15,7 +15,8 @@ interface PageProps {
   pageProps: any;
 }
 
-const Page: React.FC<PageProps> = ({ pageProps }) => {
+// const Page: React.FC<PageProps> = ({ pageProps }) => {
+  const Page: React.FC<{ pageProps: any }> = ({ pageProps }) => {
 
   const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
 
