@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addTask, editTask, deleteTask } from './redux/taskSlice';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Image from 'next/image';
+
 
 interface Task {
   title: string;
@@ -271,7 +273,13 @@ const Todo = () => {
                       className="p-1"
                       onClick={() => handleToggleDropdown(index)}
                     >
-                      <img src="../Assets/Icons/dots.svg" className="" alt="dots" />
+                      <Image 
+                        src="../Assets/Icons/dots.svg" 
+                        className="" 
+                        width={24}
+                        height={24}
+                        alt="dots" 
+                      />
                     </button>
                     {dropdownIndex === index && (
                       <div className="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5">

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { auth, db } from "../../firebase";
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Image from 'next/image';
 
 export interface UserData {
     shortBio: string;
@@ -148,9 +149,11 @@ const Members = () => {
                                     className="bg-gray-100 mb-4 border border-slate-600 rounded"
                                 >
                                     <td className="p-4 text-black">
-                                        <img
+                                        <Image
                                             src={user.avatar}
                                             alt={`${user.name}'s avatar`}
+                                            width={24}
+                                            height={24}
                                             className="text-indigo-500 w-12 h-12 rounded-full inline-block"
                                         />
                                     </td>

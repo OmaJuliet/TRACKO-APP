@@ -11,6 +11,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { FaTrash } from 'react-icons/fa';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import Image from 'next/image';
 
 function Header() {
     const [user] = useAuthState(auth);
@@ -137,7 +138,14 @@ function Header() {
                 <section className="mr-2 flex">
                     <figure className="flex flex-row items-center mr-12 relative">
                         <div className="relative inline-block">
-                            <img src="../Assets/Icons/calendar.svg" className="cursor-pointer w-6 h-6" alt="calendar icon" onClick={openCalendarDropdown} />
+                            <Image
+                                src="../Assets/Icons/calendar.svg"
+                                className="cursor-pointer"
+                                width={24}
+                                height={24}
+                                alt="calendar icon"
+                                onClick={openCalendarDropdown}
+                            />
                             {isCalendarDropdownOpen && (
                                 <section className="absolute z-50 right-8 mt-[-2.7rem] w-32 bg-white border border-gray-300 rounded-md shadow-lg">
                                     <ul className="py-2">
@@ -148,11 +156,23 @@ function Header() {
                             )}
                         </div>
                         <Link href="/messages">
-                            <img src="../Assets/Icons/mess-que.svg" className="ml-6 cursor-pointer" alt="message icon" />
+                            <Image
+                                src="../Assets/Icons/mess-que.svg"
+                                className="ml-6 cursor-pointer"
+                                width={24}
+                                height={24}
+                                alt="message icon"
+                            />
                         </Link>
-                       <Link href="/notifications">
-                        <img src="../Assets/Icons/bell.svg" className="ml-6 cursor-pointer" alt="notification icon" />
-                       </Link>
+                        <Link href="/notifications">
+                            <Image
+                                src="../Assets/Icons/bell.svg"
+                                className="ml-6 cursor-pointer"
+                                width={24}
+                                height={24}
+                                alt="notification icon"
+                            />
+                        </Link>
                     </figure>
 
                     <section className="flex flex-col mt-1">
@@ -163,15 +183,34 @@ function Header() {
                     <section className="relative inline-block">
                         <figure className="ml-4 rounded-full">
                             {userAvatar ? (
-                                <img src={userAvatar} className="rounded-full w-12 h-12" alt="user" />
+                                <Image
+                                    src={userAvatar}
+                                    className="rounded-full w-12 h-12"
+                                    width={24}
+                                    height={24}
+                                    alt="user"
+                                />
                             ) : (
-                                <img src="../Assets/Icons/user.svg" className="rounded-full w-12 h-12" alt="user icon" />
+                                <Image
+                                    src="../Assets/Icons/user.svg"
+                                    className="rounded-full w-12 h-12"
+                                    width={24}
+                                    height={24}
+                                    alt="user icon"
+                                />
                             )}
                         </figure>
                     </section>
 
                     <section className="mt-3 ml-1">
-                        <img src="../Assets/Icons/dropdown.svg" className="cursor-pointer" alt="dropdown icon" onClick={toggleUserDropdown} />
+                        <Image
+                            src="../Assets/Icons/dropdown.svg"
+                            className="cursor-pointer"
+                            width={16}
+                            height={16}
+                            alt="dropdown icon"
+                            onClick={toggleUserDropdown}
+                        />
                         {isUserDropdownOpen && (
                             <section className="absolute z-50 right-8 top-16 w-32 bg-white border border-gray-300 rounded-md shadow-lg">
                                 <ul className="py-4">

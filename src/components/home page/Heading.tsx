@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { Key, useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { setAppName } from './redux/appSlice';
 import { RootState } from './redux/store';
@@ -7,8 +7,10 @@ import 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../../firebase';
 import { collection, doc, getDocs, updateDoc } from "firebase/firestore";
+import Image from 'next/image';
 
 export interface UserData {
+  id: Key | null | undefined;
   shortBio: string;
   jobRole: string;
   uid: string;
@@ -69,7 +71,6 @@ const Heading = () => {
 
 
 
-
   const appName = useSelector((state: RootState) => state.app.appName);
   const handleEditIconClick = () => {
     setIsEditing(true);
@@ -108,27 +109,44 @@ const Heading = () => {
             ) : (
               <>
                 <h1 className="text-3xl font-medium">{appName}</h1>
-                <img
+                <Image
                   src="../Assets/Icons/pen.svg"
                   className="w-7 h-7 mt-2 ml-4 cursor-pointer"
+                  width= {24}
+                  height= {24}
                   alt="pen"
                   onClick={handleEditIconClick}
                 />
               </>
             )}
-            <img src="../Assets/Icons/outline.svg" className="w-7 h-7 mt-2 ml-2 p-1 rounded bg-purple-100 cursor-pointer" alt="outline" />
+            <Image 
+              src="../Assets/Icons/outline.svg" 
+              className="w-7 h-7 mt-2 ml-2 p-1 rounded bg-purple-100 cursor-pointer"
+              width= {24}
+                  height= {24} 
+              alt="outline" 
+            />
           </section>
 
           <section>
             <section className="flex">
-              <img src="../Assets/Icons/plus.svg" className="w-8 h-8 rounded-full cursor-pointer" alt="plus icon" />
+              <Image 
+                src="../Assets/Icons/plus.svg" 
+                className="w-8 h-8 rounded-full cursor-pointer"
+                width= {24}
+                  height= {24} 
+                alt="plus icon" 
+              />
               <p className="font-medium text-base text-purple-600 ml-2 mr-3 mt-2 cursor-pointer">Invite</p>
 
               {users.map((user) => (
-                <img
+                <Image
+                  key={user.id}
                   src={user.avatar}
                   alt={`${user.name}'s avatar`}
                   title={user.name}
+                  width= {24}
+                  height= {24}
                   className="w-8 h-8 rounded-full mr-1"
                 />
               ))}

@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { auth } from '../firebase';
 import Header from '@/components/Header';
 import Sidebar from '@/components/Sidebar';

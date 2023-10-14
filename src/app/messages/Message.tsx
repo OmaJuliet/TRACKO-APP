@@ -1,6 +1,7 @@
 import React from "react";
 import { auth } from "../../firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Image from 'next/image';
 
 interface MessageProps {
     message: {
@@ -29,10 +30,17 @@ const Message = ({ message }: MessageProps) => {
         <section className={messageClass}>
             <section className="message-content">
                 <section className="message-details">
-                    <img
+                    {/* <img
                         className="avatar"
                         src={message.avatar}
                         alt="user avatar"
+                    /> */}
+                    <Image 
+                        src={message.avatar}
+                        width={28}
+                        height={28}
+                        className="avatar"
+                        alt="User avatar"
                     />
                     <div className="message-text">
                         <p className="name">{message.name}</p>

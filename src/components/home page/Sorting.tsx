@@ -2,6 +2,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { FaArrowDown, FaFilter } from "react-icons/fa";
+import Image from 'next/image';
+
 
 interface ModalProps {
   isOpen: boolean;
@@ -44,7 +46,13 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
           <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-2 gap-6">
             {data.map((item, index) => (
             <article className="bg-gray-100 rounded px-4 py-4 mx-2 flex cursor-pointer" key={index}>
-              <img src={item.icon} className="w-6 h-6" alt="" />
+              <Image 
+                src={item.icon} 
+                className="w-6 h-6"
+                width={24}
+                height={24} 
+                alt="" 
+              />
               <h1 className="ml-3 text-lg">{item.text}</h1>
             </article>
             ))}
@@ -92,7 +100,13 @@ const Sorting: React.FC = () => {
             <section
               className="w-28 mr-2 bg-white text-black flex flex-row border border-gray-500 py-2 px-3 ml-2 cursor-pointer rounded"
               onClick={handleSortBoxClick}>
-              <img src="../Assets/Icons/share.svg" className="" alt="" />
+              <Image 
+                src="../Assets/Icons/share.svg" 
+                className="" 
+                width={24}
+                height={24}
+                alt="" 
+              />
               <p className="text-gray-400 text-lg ml-2">Share</p>
             </section>
             <Modal isOpen={modalOpen} onClose={closeModal} />

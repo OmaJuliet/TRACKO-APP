@@ -1,6 +1,7 @@
 'use client'
 import Link from "next/link";
-import { usePathname } from 'next/navigation'
+import { usePathname } from 'next/navigation';
+import Image from 'next/image';
 
 function Sidebar() {
     const pathname = usePathname();
@@ -12,7 +13,13 @@ function Sidebar() {
             <section className="flex flex-col mt-12 ml-6">
                 <section className="border-b-2 border-gray-200">
                     <figure className="flex pb-5">
-                        <img src="../Assets/Icons/logo.svg" className="text-purple-600" alt="logo" />
+                        <Image
+                            src="../Assets/Icons/logo.svg"
+                            className="text-purple-600"
+                            width={24}
+                            height={24}
+                            alt="logo"
+                        />
                         <p className="font-medium text-xl ml-2">TRACKO</p>
                     </figure>
                 </section>
@@ -23,7 +30,13 @@ function Sidebar() {
                             className={`flex flex-row cursor-pointer ${pathname === "/" ? "text-purple-600" : "text-gray-700"
                                 }`}
                         >
-                            <img src="../Assets/Icons/home.svg" className="" alt="" />
+                            <Image
+                                src="../Assets/Icons/home.svg"
+                                className=""
+                                width={24}
+                                height={24}
+                                alt=""
+                            />
                             <span className="text-lg ml-3">Home</span>
                         </div>
                     </Link>
@@ -34,7 +47,13 @@ function Sidebar() {
                             className={`flex flex-row cursor-pointer ${pathname === '/messages' ? 'text-purple-600' : 'text-gray-700'
                                 }`}
                         >
-                            <img src="../Assets/Icons/message.svg" className="" alt="" />
+                            <Image
+                                src="../Assets/Icons/message.svg"
+                                className=""
+                                width={24}
+                                height={24}
+                                alt=""
+                            />
                             <span className="text-lg ml-3">Chat Room</span>
                         </section>
                     </Link>
@@ -45,7 +64,13 @@ function Sidebar() {
                             className={`flex flex-row cursor-pointer ${pathname === '/tasks' ? 'text-purple-600' : 'text-gray-700'
                                 }`}
                         >
-                            <img src="../Assets/Icons/tasks.svg" className="" alt="" />
+                            <Image
+                                src="../Assets/Icons/tasks.svg"
+                                className=""
+                                width={24}
+                                height={24}
+                                alt=""
+                            />
                             <span className="text-lg ml-3">Tasks</span>
                         </section>
                     </Link>
@@ -56,7 +81,13 @@ function Sidebar() {
                             className={`flex flex-row cursor-pointer ${pathname === '/members' ? 'text-purple-600' : 'text-gray-700'
                                 }`}
                         >
-                            <img src="../Assets/Icons/members.svg" className="" alt="" />
+                            <Image
+                                src="../Assets/Icons/members.svg"
+                                className=""
+                                width={24}
+                                height={24}
+                                alt=""
+                            />
                             <span className="text-lg ml-3">Members</span>
                         </section>
                     </Link>
@@ -67,7 +98,13 @@ function Sidebar() {
                             className={`flex flex-row cursor-pointer ${pathname === '/settings' ? 'text-purple-600' : 'text-gray-700'
                                 }`}
                         >
-                            <img src="../Assets/Icons/settings.svg" className="" alt="" />
+                            <Image
+                                src="../Assets/Icons/settings.svg"
+                                className=""
+                                width={24}
+                                height={24}
+                                alt=""
+                            />
                             <span className="text-lg ml-3">Settings</span>
                         </section>
                     </Link>
@@ -77,7 +114,13 @@ function Sidebar() {
             <section className="mx-3 mb-6 rounded-lg pt-1 pb-3 px-4 sxl:px-3 bg-gray-100 sxl:mt-6">
                 <section>
                     <figure className="flex justify-center">
-                        <img src="../Assets/Images/lightbulb.svg" className="w-16 h-16 sxl:w-12 sxl:h-12" alt="light bulb" />
+                        <Image
+                            src="../Assets/Images/lightbulb.svg"
+                            className="w-16 h-16 sxl:w-12 sxl:h-12"
+                            width={24}
+                            height={24}
+                            alt="light bulb"
+                        />
                     </figure>
                     <section className="text-center mb-3 sxl:mb-1">
                         <h1 className="text-lg font-semibold mb-2">Thoughts Time</h1>

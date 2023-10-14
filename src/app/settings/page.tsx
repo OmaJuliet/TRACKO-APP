@@ -8,7 +8,7 @@ import SecuritySetting from '@/components/settings/SecuritySetting'
 import SupportSetting from '@/components/settings/SupportSetting'
 
 
-const page = () => {
+const Page = () => {
   const [activeTab, setActiveTab] = useState("accounts");
 
   const handleTabChange = (tab: React.SetStateAction<string>) => {
@@ -99,4 +99,4 @@ const Support = () => {
   );
 };
 
-export default page;
+export default Page;
