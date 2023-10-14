@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
+    "encoding": "^0.1.13",
     "firebase": "^10.5.0",
     "next": "13.5.4",
     "react": "^18",
