@@ -11,12 +11,11 @@ import { Provider } from 'react-redux';
 import store from '../components/home page/redux/store';
 
 interface PageProps {
-  Components: React.ComponentType<any>;
+  // Components: React.ComponentType<any>;
   pageProps: any;
 }
 
-// const Page: React.FC<PageProps> = ({ pageProps }) => {
-  const Page: React.FC<{ pageProps: any }> = ({ pageProps }) => {
+const Page: React.FC<PageProps> = ({ pageProps }) => {
 
   const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
 
