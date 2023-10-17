@@ -21,11 +21,8 @@ function Header() {
     const [isCalendarDropdownOpen, setIsCalendarDropdownOpen] = useState(false);
     const [isSetEventModalOpen, setIsSetEventModalOpen] = useState(false);
     const [isViewEventModalOpen, setIsViewEventModalOpen] = useState(false);
-    // const [events, setEvents] = useState([]);
     const [events, setEvents] = useState<{ date: Date | null; name: string; completed: boolean; }[]>([]);
     const [selectedEvent, setSelectedEvent] = useState('');
-    // const [selectedDate, setSelectedDate] = useState(null);
-    // const [eventName, setEventName] = useState('');
     const [selectedDate, setSelectedDate] = useState<Date | null>(null);
     const [eventName, setEventName] = useState<string>('');
 
@@ -49,16 +46,31 @@ function Header() {
         }
     }, [user]);
 
+    // useEffect(() => {
+    //     const storedEvents = localStorage.getItem('events');
+    //     if (storedEvents) {
+    //         setEvents(JSON.parse(storedEvents));
+    //     }
+    // }, []);
+
+    // useEffect(() => {
+    //     localStorage.setItem('events', JSON.stringify(events));
+    // }, [events]);
     useEffect(() => {
-        const storedEvents = localStorage.getItem('events');
-        if (storedEvents) {
-            setEvents(JSON.parse(storedEvents));
+        if (typeof window !== 'undefined') {
+            const storedEvents = localStorage.getItem('events');
+            if (storedEvents) {
+                setEvents(JSON.parse(storedEvents));
+            }
         }
     }, []);
 
     useEffect(() => {
-        localStorage.setItem('events', JSON.stringify(events));
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('events', JSON.stringify(events));
+        }
     }, [events]);
+
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);

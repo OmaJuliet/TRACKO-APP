@@ -23,18 +23,6 @@ export interface UserData {
 const Heading = () => {
   const [isEditing, setIsEditing] = useState(false);
   const dispatch = useDispatch();
-
-  // const [user] = useAuthState(auth);
-  // const [userAvatar, setUserAvatar] = useState('');
-
-  // useEffect(() => {
-  //   if (user) {
-  //     setUserAvatar(user.photoURL || '');
-  //   } else {
-  //     setUserAvatar('');
-  //   }
-  // }, [user]);
-
   const [users, setUsers] = useState<UserData[]>([]);
   const [authUser] = useAuthState(auth);
 
