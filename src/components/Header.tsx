@@ -18,13 +18,17 @@ function Header() {
     const [userAvatar, setUserAvatar] = useState('');
     const [isUserDropdownOpen, setIsUserDropdownOpen] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [selectedDate, setSelectedDate] = useState(null);
     const [isCalendarDropdownOpen, setIsCalendarDropdownOpen] = useState(false);
     const [isSetEventModalOpen, setIsSetEventModalOpen] = useState(false);
     const [isViewEventModalOpen, setIsViewEventModalOpen] = useState(false);
-    const [events, setEvents] = useState([]);
+    // const [events, setEvents] = useState([]);
+    const [events, setEvents] = useState<{ date: Date | null; name: string; completed: boolean; }[]>([]);
     const [selectedEvent, setSelectedEvent] = useState('');
-    const [eventName, setEventName] = useState('');
+    // const [selectedDate, setSelectedDate] = useState(null);
+    // const [eventName, setEventName] = useState('');
+    const [selectedDate, setSelectedDate] = useState<Date | null>(null);
+    const [eventName, setEventName] = useState<string>('');
+
     const router = useRouter();
 
     const googleSignIn = () => {
@@ -265,13 +269,14 @@ function Header() {
 
                 <DatePicker
                     selected={selectedDate}
-                    onChange={(date: SetStateAction<null>) => setSelectedDate(date)}
+                    onChange={(date: Date | null) => setSelectedDate(date)}
                     dateFormat="MMMM d, yyyy h:mm aa"
                     placeholderText="Select a date and time"
                     showTimeInput
                     timeInputLabel="Time:"
                     className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500 mt-6"
                 />
+
 
                 <section className="mt-6">
                     <button onClick={handleSetEventSubmit} className="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600">Submit</button>

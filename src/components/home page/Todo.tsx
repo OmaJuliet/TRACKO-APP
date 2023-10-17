@@ -1,5 +1,5 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, ChangeEvent } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTask, editTask, deleteTask } from './redux/taskSlice';
@@ -7,13 +7,14 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Image from 'next/image';
 
-
 interface Task {
+  id: number;
   title: string;
   detail: string;
   member: string;
   priority: string;
   dueDate: Date | null;
+  status: string;
 }
 
 interface ModalProps {
@@ -23,13 +24,13 @@ interface ModalProps {
   editingTask: Task | null;
 }
 
-
 const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editingTask }) => {
   const [taskTitle, setTaskTitle] = useState("");
   const [taskDetail, setTaskDetail] = useState("");
   const [taskMember, setTaskMember] = useState("");
   const [taskPriority, setTaskPriority] = useState("low");
-  const [taskDueDate, setTaskDueDate] = useState<null | string>(null);
+  const [taskDueDate, setTaskDueDate] = useState<Date | null>(null);
+
 
   useEffect(() => {
     if (editingTask) {
@@ -37,17 +38,18 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editin
       setTaskDetail(editingTask.detail);
       setTaskMember(editingTask.member);
       setTaskPriority(editingTask.priority);
+      setTaskDueDate(editingTask.dueDate);
     } else {
       setTaskTitle("");
       setTaskDetail("");
       setTaskMember("");
       setTaskPriority("low");
+      setTaskDueDate(null);
     }
   }, [editingTask]);
 
   const closeModal = () => {
     onClose();
-    // Optionally, you can also reset the form fields here
     setTaskTitle("");
     setTaskDetail("");
     setTaskMember("");
@@ -55,7 +57,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editin
     setTaskDueDate(null);
   };
 
-  //
   const isEditing = editingTask !== null;
   const buttonText = isEditing ? "Edit Task" : "Add Task";
 
@@ -66,13 +67,17 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editin
       detail: taskDetail,
       member: taskMember,
       priority: taskPriority,
-      dueDate: taskDueDate ? new Date(taskDueDate) : null,
+      dueDate: taskDueDate,
+      id: 0, // Update this with the appropriate ID
+      status: '',
     };
+
     handleTaskSubmit(newTask);
     setTaskTitle("");
     setTaskDetail("");
     setTaskMember("");
     setTaskPriority("low");
+    setTaskDueDate(null);
   };
 
   useEffect(() => {
@@ -97,10 +102,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editin
       <section className="bg-white px-10 py-8 lg:mt-8 w-7/12 modal-content">
         {/* Modal content */}
         <h2 className="text-lg font-medium mb-3">{isEditing ? "Edit Task" : "Add Task"}</h2>
-        <button
-          className="absolute top-2 right-2 font-semibold text-black cursor-pointer text-xl"
-          onClick={closeModal}
-        >
+        <button className="absolute top-2 right-2 font-semibold text-black cursor-pointer text-xl" onClick={closeModal}>
           &times;
         </button>
         <form onSubmit={handleSubmit}>
@@ -115,7 +117,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editin
                 name="title"
                 className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500"
                 value={taskTitle}
-                onChange={(e) => setTaskTitle(e.target.value)}
+                onChange={(e: ChangeEvent<HTMLInputElement>) => setTaskTitle(e.target.value)}
                 placeholder="Heading of your task"
               />
             </section>
@@ -152,14 +154,23 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editin
               <label htmlFor="dueDate" className="text-gray-700 text-sm mb-1">
                 Due Date
               </label>
+              {/* <input
+                type="date"
+                id="dueDate"
+                name="dueDate"
+                className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500"
+                value={taskDueDate ? new Date(taskDueDate).toISOString().split('T')[0] : ''}
+                onChange={(e) => setTaskDueDate(e.target.value)}
+              /> */}
               <input
                 type="date"
                 id="dueDate"
                 name="dueDate"
                 className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500"
-                value={taskDueDate}
-                onChange={(e) => setTaskDueDate(e.target.value)}
+                value={taskDueDate ? new Date(taskDueDate).toISOString().split('T')[0] : ''}
+                onChange={(e) => setTaskDueDate(e.target.value ? new Date(e.target.value) : null)}
               />
+
             </section>
 
             <section className="mt-4">
@@ -179,10 +190,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editin
               </select>
             </section>
           </section>
-          <button
-            type="submit"
-            className={`bg-purple-500 text-white px-4 py-2 rounded ${isEditing ? 'border border-purple-500 bg-none text-black' : ''}`}
-          >
+          <button type="submit" className={`bg-purple-500 text-white px-4 py-2 rounded ${isEditing ? 'border border-purple-500 bg-none text-black' : ''}`}>
             {buttonText}
           </button>
         </form>
@@ -193,7 +201,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editin
 
 const Todo = () => {
   const dispatch = useDispatch();
-  const taskData = useSelector((state) => state.tasks.tasks);
+  const taskData: Task[] = useSelector((state: { tasks: { tasks: Task[] } }) => state.tasks.tasks);
   const [modalOpen, setModalOpen] = useState(false);
   const [editingTask, setEditingTask] = useState<number | null>(null);
   const [dropdownIndex, setDropdownIndex] = useState<number | null>(null);
@@ -234,9 +242,8 @@ const Todo = () => {
     }
   };
 
-  //due date logic
   useEffect(() => {
-    taskData.forEach((task: { dueDate: string | number | Date; title: any; }, index: any) => {
+    taskData.forEach((task: Task, index: number) => {
       if (task.dueDate && new Date(task.dueDate) <= new Date()) {
         toast.error(`Task "${task.title}" is overdue!`, {
           position: "top-right",
@@ -273,12 +280,12 @@ const Todo = () => {
                       className="p-1"
                       onClick={() => handleToggleDropdown(index)}
                     >
-                      <Image 
-                        src="../Assets/Icons/dots.svg" 
-                        className="" 
+                      <Image
+                        src="../Assets/Icons/dots.svg"
+                        className=""
                         width={24}
                         height={24}
-                        alt="dots" 
+                        alt="dots"
                       />
                     </button>
                     {dropdownIndex === index && (

@@ -1,10 +1,10 @@
 // types.ts
 export interface Task {
-    id: string;
+    id: number;
     title: string;
     detail: string;
     member: string;
     priority: string;
-    status: string; //
+    status: string; 
   }
   
