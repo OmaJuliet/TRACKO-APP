@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import Image from 'next/image';
 
 const Done = () => {
   return (
@@ -17,7 +18,13 @@ const Done = () => {
             <section className="bg-white rounded-lg p-4">
               <section className="flex flex-row justify-between">
                 <p className="text-green-500 bg-green-100 text-sm rounded py-1 px-2">Completed</p>
-                <p className="text-lg">...</p>
+                <Image
+                  src="../Assets/Icons/dots.svg"
+                  className=""
+                  width={24}
+                  height={24}
+                  alt="dots"
+                />
               </section>
               <section className="mt-2">
                 <h1 className="font-semibold text-lg">Heading</h1>

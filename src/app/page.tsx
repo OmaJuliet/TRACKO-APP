@@ -10,12 +10,13 @@ import Login from './Login';
 import { Provider } from 'react-redux';
 import store from '../components/home page/redux/store';
 
-interface PageProps {
-  // Components: React.ComponentType<any>;
-  pageProps: any;
-}
+// interface PageProps {
+//   Components: React.ComponentType<any>;
+//   pageProps: any;
+// }
 
-const Page: React.FC<PageProps> = ({ pageProps }) => {
+const Page = () => {
+// const Page: React.FC<PageProps> = ({ pageProps }) => {
 
   const [isUserAuthenticated, setIsUserAuthenticated] = useState(false);
 
@@ -27,23 +28,24 @@ const Page: React.FC<PageProps> = ({ pageProps }) => {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       {isUserAuthenticated ? (
         <Provider store={store}>
-          <>
+          <React.Fragment>
             <Sidebar />
             <Header />
             <section className="relative pl-44">
               <Heading />
               <Sorting />
-              <Lists {...pageProps} />
+              <Lists />
+              {/* <Lists {...pageProps} /> */}
             </section>
-          </>
+          </React.Fragment>
         </Provider>
       ) : (
         <Login />
       )}
-    </>
+    </React.Fragment>
   );
 };
 

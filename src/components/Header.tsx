@@ -255,6 +255,14 @@ function Header() {
                 }}
             >
                 <h2 className="text-lg font-medium mb-3">Set Event</h2>
+                <input
+                    type="text"
+                    value={eventName}
+                    onChange={(e) => setEventName(e.target.value)}
+                    placeholder="Enter event name"
+                    className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500"
+                />
+
                 <DatePicker
                     selected={selectedDate}
                     onChange={(date: SetStateAction<null>) => setSelectedDate(date)}
@@ -262,16 +270,9 @@ function Header() {
                     placeholderText="Select a date and time"
                     showTimeInput
                     timeInputLabel="Time:"
-                    className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500"
-                />
-
-                <input
-                    type="text"
-                    value={eventName}
-                    onChange={(e) => setEventName(e.target.value)}
-                    placeholder="Enter event name"
                     className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500 mt-6"
                 />
+
                 <section className="mt-6">
                     <button onClick={handleSetEventSubmit} className="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600">Submit</button>
                     <button onClick={closeSetEventModal} className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded ml-4">Close</button>
