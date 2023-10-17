@@ -1,5 +1,5 @@
 'use client';
-import { SetStateAction, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth } from '../firebase';
 import { useRouter } from 'next/navigation';
@@ -45,17 +45,6 @@ function Header() {
             setUserAvatar('');
         }
     }, [user]);
-
-    // useEffect(() => {
-    //     const storedEvents = localStorage.getItem('events');
-    //     if (storedEvents) {
-    //         setEvents(JSON.parse(storedEvents));
-    //     }
-    // }, []);
-
-    // useEffect(() => {
-    //     localStorage.setItem('events', JSON.stringify(events));
-    // }, [events]);
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);

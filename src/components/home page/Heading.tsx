@@ -1,8 +1,8 @@
 'use client'
 import React, { Key, useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { setAppName } from './redux/appSlice';
-import { RootState } from './redux/store';
+// import { useSelector, useDispatch } from 'react-redux';
+// import { setAppName } from './redux/appSlice';
+// import { RootState } from './redux/store';
 import 'firebase/auth';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { auth, db } from '../../firebase';
@@ -21,8 +21,8 @@ export interface UserData {
 
 
 const Heading = () => {
-  const [isEditing, setIsEditing] = useState(false);
-  const dispatch = useDispatch();
+  // const [isEditing, setIsEditing] = useState(false);
+  // const dispatch = useDispatch();
   const [users, setUsers] = useState<UserData[]>([]);
   const [authUser] = useAuthState(auth);
 
@@ -59,26 +59,26 @@ const Heading = () => {
 
 
 
-  const appName = useSelector((state: RootState) => state.app.appName);
-  const handleEditIconClick = () => {
-    setIsEditing(true);
-  };
+  // const appName = useSelector((state: RootState) => state.app.appName);
+  // const handleEditIconClick = () => {
+  //   setIsEditing(true);
+  // };
 
-  const handleAppNameChange = (e: { target: { value: string; }; }) => {
-    dispatch(setAppName(e.target.value));
-    localStorage.setItem('appName', e.target.value);
-  };
+  // const handleAppNameChange = (e: { target: { value: string; }; }) => {
+  //   dispatch(setAppName(e.target.value));
+  //   localStorage.setItem('appName', e.target.value);
+  // };
 
-  const handleInputBlur = () => {
-    setIsEditing(false);
-  };
+  // const handleInputBlur = () => {
+  //   setIsEditing(false);
+  // };
 
-  useEffect(() => {
-    const storedAppName = localStorage.getItem('appName');
-    if (storedAppName) {
-      dispatch(setAppName(storedAppName));
-    }
-  }, [dispatch]);
+  // useEffect(() => {
+  //   const storedAppName = localStorage.getItem('appName');
+  //   if (storedAppName) {
+  //     dispatch(setAppName(storedAppName));
+  //   }
+  // }, [dispatch]);
 
 
   return (
@@ -86,44 +86,31 @@ const Heading = () => {
       <section className="container pt-8 mx-auto pl-24 pr-8">
         <section className="flex flex-row justify-between">
           <section className="flex">
-            {isEditing ? (
-              <input
-                type="text"
-                value={appName}
-                onChange={handleAppNameChange}
-                onBlur={handleInputBlur}
-                className="text-3xl font-medium outline-none bg-transparent border-none"
-              />
-            ) : (
-              <>
-                <h1 className="text-3xl font-medium">{appName}</h1>
-                <Image
-                  src="../Assets/Icons/pen.svg"
-                  className="w-7 h-7 mt-2 ml-4 cursor-pointer"
-                  width= {24}
-                  height= {24}
-                  alt="pen"
-                  onClick={handleEditIconClick}
-                />
-              </>
-            )}
-            <Image 
-              src="../Assets/Icons/outline.svg" 
+            <h1 className="text-3xl font-medium">Tracko App</h1>
+            <Image
+              src="../Assets/Icons/pen.svg"
+              className="w-7 h-7 mt-2 ml-4 cursor-pointer"
+              width={24}
+              height={24}
+              alt="pen"
+            />
+            <Image
+              src="../Assets/Icons/outline.svg"
               className="w-7 h-7 mt-2 ml-2 p-1 rounded bg-purple-100 cursor-pointer"
-              width= {24}
-                  height= {24} 
-              alt="outline" 
+              width={24}
+              height={24}
+              alt="outline"
             />
           </section>
 
           <section>
             <section className="flex">
-              <Image 
-                src="../Assets/Icons/plus.svg" 
+              <Image
+                src="../Assets/Icons/plus.svg"
                 className="w-8 h-8 rounded-full cursor-pointer"
-                width= {24}
-                  height= {24} 
-                alt="plus icon" 
+                width={24}
+                height={24}
+                alt="plus icon"
               />
               <p className="font-medium text-base text-purple-600 ml-2 mr-3 mt-2 cursor-pointer">Invite</p>
 
@@ -133,8 +120,8 @@ const Heading = () => {
                   src={user.avatar}
                   alt={`${user.name}'s avatar`}
                   title={user.name}
-                  width= {24}
-                  height= {24}
+                  width={24}
+                  height={24}
                   className="w-8 h-8 rounded-full mr-1"
                 />
               ))}
