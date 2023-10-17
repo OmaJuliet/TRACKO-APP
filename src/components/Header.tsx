@@ -56,21 +56,6 @@ function Header() {
     // useEffect(() => {
     //     localStorage.setItem('events', JSON.stringify(events));
     // }, [events]);
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const storedEvents = localStorage.getItem('events');
-            if (storedEvents) {
-                setEvents(JSON.parse(storedEvents));
-            }
-        }
-    }, []);
-
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            localStorage.setItem('events', JSON.stringify(events));
-        }
-    }, [events]);
-
 
     const toggleDropdown = () => {
         setIsDropdownOpen(!isDropdownOpen);
