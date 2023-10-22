@@ -10,7 +10,7 @@ This is a project management DESKTOP web application. It is NOT optimized for mo
 
 
 ## Web App UI
-![Tracko UI](tracko.jpgg) 
+![Tracko UI](tracko.jpg) 
 
 
 ## Technologies Used
