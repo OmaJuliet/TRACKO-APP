@@ -235,9 +235,9 @@ function Header() {
                         />
                         <p className="font-medium msm:text-xl mmm:text-xl text-lg ml-1">TRACKO</p>
                     </figure>
-                    <section className="">
+                    {/* <section className="">
                         <input type="text" className="bg-gray-100 p-2 rounded outline-none" placeholder="Search for anything" />
-                    </section>
+                    </section> */}
                 </section>
 
                 <section className="mr-2 flex mt-4 mss:justify-between msm:justify-between mmm:justify-between">
