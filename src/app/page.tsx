@@ -34,7 +34,8 @@ const Page = () => {
           <React.Fragment>
             <Sidebar />
             <Header />
-            <section className="relative pl-44">
+            {/* <section className="relative pl-44"> */}
+            <section className="relative pl-0 sm:pl-1 md:pl-12 lg:pl-44">
               <Heading />
               <Sorting />
               <Lists />

@@ -120,12 +120,12 @@ function Header() {
 
     return (
         <>
-            <section className="flex justify-between items-center p-6 w-full lg:pl-24 overflow-hidden bg-white top-0 z-50 border-b-2">
+            <section className="lg:flex hidden flex lg:justify-between items-center p-6 w-full lg:pl-24 pl-1 overflow-hidden bg-white top-0 z-50 border-b-2">
                 <section className="ml-44">
                     <input type="text" className="bg-gray-100 p-2 rounded outline-none" placeholder="Search for anything" />
                 </section>
 
-                <section className="mr-2 flex">
+                <section className="mr-2 flex justify-between">
                     <figure className="flex flex-row items-center mr-12 relative">
                         <div className="relative inline-block">
                             <Image
@@ -165,56 +165,173 @@ function Header() {
                         </Link>
                     </figure>
 
-                    <section className="flex flex-col mt-1">
-                        <h2 className="text-sm font-medium">{user ? user.displayName : 'Name'}</h2>
-                        <p className="text-sm">Remote</p>
-                    </section>
+                    <section className="flex">
+                        <section className="flex flex-col mt-1">
+                            <h2 className="text-sm font-medium">{user ? user.displayName : 'Name'}</h2>
+                            <p className="text-sm">Remote</p>
+                        </section>
 
-                    <section className="relative inline-block">
-                        <figure className="ml-4 rounded-full">
-                            {userAvatar ? (
-                                <Image
-                                    src={userAvatar}
-                                    className="rounded-full w-12 h-12"
-                                    width={24}
-                                    height={24}
-                                    alt="user"
-                                />
-                            ) : (
-                                <Image
-                                    src="../Assets/Icons/user.svg"
-                                    className="rounded-full w-12 h-12"
-                                    width={24}
-                                    height={24}
-                                    alt="user icon"
-                                />
+                        <section className="relative inline-block">
+                            <figure className="ml-4 rounded-full">
+                                {userAvatar ? (
+                                    <Image
+                                        src={userAvatar}
+                                        className="rounded-full w-12 h-12"
+                                        width={24}
+                                        height={24}
+                                        alt="user"
+                                    />
+                                ) : (
+                                    <Image
+                                        src="../Assets/Icons/user.svg"
+                                        className="rounded-full w-12 h-12"
+                                        width={24}
+                                        height={24}
+                                        alt="user icon"
+                                    />
+                                )}
+                            </figure>
+                        </section>
+
+                        <section className="mt-3 ml-1">
+                            <Image
+                                src="../Assets/Icons/dropdown.svg"
+                                className="cursor-pointer"
+                                width={16}
+                                height={16}
+                                alt="dropdown icon"
+                                onClick={toggleUserDropdown}
+                            />
+                            {isUserDropdownOpen && (
+                                <section className="absolute z-50 right-8 top-16 w-32 bg-white border border-gray-300 rounded-md shadow-lg">
+                                    <ul className="py-4">
+                                        <Link href="/settings">
+                                            <li className="px-6 py-2 hover:bg-gray-100 cursor-pointer">Profile</li>
+                                        </Link>
+                                        {user ? (
+                                            <li className="px-6 py-2 hover:bg-gray-100 cursor-pointer" onClick={signOut}>Sign Out</li>
+                                        ) : (
+                                            <li className="px-6 py-2 hover:bg-gray-100 cursor-pointer" onClick={googleSignIn}>Sign In</li>
+                                        )}
+                                    </ul>
+                                </section>
                             )}
-                        </figure>
+                        </section>
                     </section>
+                </section>
+            </section>
 
-                    <section className="mt-3 ml-1">
+
+            {/* mobile navigation */}
+            <section className="bg-white top-0 z-50 border-b-2 lg:hidden block px-4 py-3 sticky w-full msm:px-12 mmm:px-16">
+                <section className="flex flex-row justify-between pt-1">
+                    <figure className="flex pb-4">
                         <Image
-                            src="../Assets/Icons/dropdown.svg"
-                            className="cursor-pointer"
-                            width={16}
-                            height={16}
-                            alt="dropdown icon"
-                            onClick={toggleUserDropdown}
+                            src="../Assets/Icons/logo.svg"
+                            className=""
+                            width={24}
+                            height={24}
+                            alt="app logo"
                         />
-                        {isUserDropdownOpen && (
-                            <section className="absolute z-50 right-8 top-16 w-32 bg-white border border-gray-300 rounded-md shadow-lg">
-                                <ul className="py-4">
-                                    <Link href="/settings">
-                                        <li className="px-6 py-2 hover:bg-gray-100 cursor-pointer">Profile</li>
-                                    </Link>
-                                    {user ? (
-                                        <li className="px-6 py-2 hover:bg-gray-100 cursor-pointer" onClick={signOut}>Sign Out</li>
-                                    ) : (
-                                        <li className="px-6 py-2 hover:bg-gray-100 cursor-pointer" onClick={googleSignIn}>Sign In</li>
-                                    )}
-                                </ul>
-                            </section>
-                        )}
+                        <p className="font-medium msm:text-xl mmm:text-xl text-lg ml-1">TRACKO</p>
+                    </figure>
+                    <section className="">
+                        <input type="text" className="bg-gray-100 p-2 rounded outline-none" placeholder="Search for anything" />
+                    </section>
+                </section>
+
+                <section className="mr-2 flex mt-4 mss:justify-between msm:justify-between mmm:justify-between">
+                    <figure className="flex flex-row items-center mr-12 relative">
+                        <div className="relative inline-block">
+                            <Image
+                                src="../Assets/Icons/calendar.svg"
+                                className="cursor-pointer"
+                                width={24}
+                                height={24}
+                                alt="calendar icon"
+                                onClick={openCalendarDropdown}
+                            />
+                            {isCalendarDropdownOpen && (
+                                <section className="absolute z-50 left-1 mt-3 w-32 bg-white border border-gray-300 rounded-md shadow-lg">
+                                    <ul className="py-2">
+                                        <li className="px-4 pb-2 hover:bg-gray-100 text-sm cursor-pointer" onClick={() => { openSetEventModal(); setIsCalendarDropdownOpen(false); }}>Set Event</li>
+                                        <li className="px-4 py-1 hover:bg-gray-100 text-sm cursor-pointer" onClick={() => { openViewEventModal(); setIsCalendarDropdownOpen(false); }}>View Events</li>
+                                    </ul>
+                                </section>
+                            )}
+                        </div>
+                        <Link href="/messages">
+                            <Image
+                                src="../Assets/Icons/mess-que.svg"
+                                className="ml-4 cursor-pointer"
+                                width={24}
+                                height={24}
+                                alt="message icon"
+                            />
+                        </Link>
+                        <Link href="/notifications">
+                            <Image
+                                src="../Assets/Icons/bell.svg"
+                                className="ml-4 cursor-pointer"
+                                width={24}
+                                height={24}
+                                alt="notification icon"
+                            />
+                        </Link>
+                    </figure>
+
+                    <section className="flex">
+                        <section className="flex flex-col mt-1">
+                            <h2 className="text-sm font-medium">{user ? user.displayName : 'Name'}</h2>
+                            <p className="text-sm">Remote</p>
+                        </section>
+
+                        <section className="relative inline-block">
+                            <figure className="ml-4 rounded-full">
+                                {userAvatar ? (
+                                    <Image
+                                        src={userAvatar}
+                                        className="rounded-full w-12 h-12"
+                                        width={24}
+                                        height={24}
+                                        alt="user"
+                                    />
+                                ) : (
+                                    <Image
+                                        src="../Assets/Icons/user.svg"
+                                        className="rounded-full w-12 h-12"
+                                        width={24}
+                                        height={24}
+                                        alt="user icon"
+                                    />
+                                )}
+                            </figure>
+                        </section>
+
+                        <section className="mt-3 ml-1">
+                            <Image
+                                src="../Assets/Icons/dropdown.svg"
+                                className="cursor-pointer"
+                                width={16}
+                                height={16}
+                                alt="dropdown icon"
+                                onClick={toggleUserDropdown}
+                            />
+                            {isUserDropdownOpen && (
+                                <section className="absolute z-50 right-8 top-32 w-32 bg-white border border-gray-300 rounded-md shadow-lg">
+                                    <ul className="py-4">
+                                        <Link href="/settings">
+                                            <li className="px-6 py-2 hover:bg-gray-100 cursor-pointer">Profile</li>
+                                        </Link>
+                                        {user ? (
+                                            <li className="px-6 py-2 hover:bg-gray-100 cursor-pointer" onClick={signOut}>Sign Out</li>
+                                        ) : (
+                                            <li className="px-6 py-2 hover:bg-gray-100 cursor-pointer" onClick={googleSignIn}>Sign In</li>
+                                        )}
+                                    </ul>
+                                </section>
+                            )}
+                        </section>
                     </section>
                 </section>
             </section>
@@ -244,31 +361,34 @@ function Header() {
                     },
                 }}
             >
-                <h2 className="text-lg font-medium mb-3">Set Event</h2>
-                <input
-                    type="text"
-                    value={eventName}
-                    onChange={(e) => setEventName(e.target.value)}
-                    placeholder="Enter event name"
-                    className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500"
-                />
+                <section className="msm:flex msm:flex-col">
+                    <h2 className="text-lg font-medium mb-3">Set Event</h2>
+                    <input
+                        type="text"
+                        value={eventName}
+                        onChange={(e) => setEventName(e.target.value)}
+                        placeholder="Enter event name"
+                        className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500"
+                    />
 
-                <DatePicker
-                    selected={selectedDate}
-                    onChange={(date: Date | null) => setSelectedDate(date)}
-                    dateFormat="MMMM d, yyyy h:mm aa"
-                    placeholderText="Select a date and time"
-                    showTimeInput
-                    timeInputLabel="Time:"
-                    className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500 mt-6"
-                />
+                    <DatePicker
+                        selected={selectedDate}
+                        onChange={(date: Date | null) => setSelectedDate(date)}
+                        dateFormat="MMMM d, yyyy h:mm aa"
+                        placeholderText="Select a date and time"
+                        showTimeInput
+                        timeInputLabel="Time:"
+                        className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500 mt-6"
+                    />
+                </section>
 
 
                 <section className="mt-6">
-                    <button onClick={handleSetEventSubmit} className="px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600">Submit</button>
-                    <button onClick={closeSetEventModal} className="px-4 py-2 text-gray-700 hover:bg-gray-100 rounded ml-4">Close</button>
+                    <button onClick={handleSetEventSubmit} className="w-full lg:w-auto lg:mt-0 mt-4 px-4 py-2 bg-purple-500 text-white rounded hover:bg-purple-600">Submit</button>
+                    <button onClick={closeSetEventModal} className="w-full lg:w-auto lg:mt-0 mt-4 px-4 py-2 text-gray-700 border border-purple-500 text-purple-500 rounded lg:ml-4">Close</button>
                 </section>
             </Modal>
+
 
             {/* View Events Modal */}
             <Modal

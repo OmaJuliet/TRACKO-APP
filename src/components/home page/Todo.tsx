@@ -99,10 +99,9 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editin
 
   return isOpen ? (
     <section className="fixed top-0 z-50 left-0 w-screen h-screen flex justify-center items-center bg-black bg-opacity-50">
-      <section className="bg-white px-10 py-8 lg:mt-8 w-7/12 modal-content">
-        {/* Modal content */}
+      <section className="relative bg-white lg:px-10 px-6 py-8 lg:mt-8 lg:w-7/12 w-11/12 modal-content">
         <h2 className="text-lg font-medium mb-3">{isEditing ? "Edit Task" : "Add Task"}</h2>
-        <button className="absolute top-2 right-2 font-semibold text-black cursor-pointer text-xl" onClick={closeModal}>
+        <button className="absolute top-2 right-2 font-bold text-black cursor-pointer text-xl" onClick={closeModal}>
           &times;
         </button>
         <form onSubmit={handleSubmit}>
@@ -154,14 +153,6 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editin
               <label htmlFor="dueDate" className="text-gray-700 text-sm mb-1">
                 Due Date
               </label>
-              {/* <input
-                type="date"
-                id="dueDate"
-                name="dueDate"
-                className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500"
-                value={taskDueDate ? new Date(taskDueDate).toISOString().split('T')[0] : ''}
-                onChange={(e) => setTaskDueDate(e.target.value)}
-              /> */}
               <input
                 type="date"
                 id="dueDate"
@@ -256,7 +247,8 @@ const Todo = () => {
   return (
     <>
       <section className="mb-16">
-        <section className="bg-gray-100 rounded-lg p-4 w-full h-4/6 overflow-auto">
+        {/* <section className="bg-gray-100 rounded-lg p-4 w-full h-4/6 overflow-auto"> */}
+        <section className="bg-gray-100 rounded-lg p-2 sm:p-2 md:p-4 lg:p-4 lg:w-full w-11/12 h-4/6 overflow-auto">
           <section className="flex flex-row justify-between border-b-4 border-purple-600 pb-4">
             <section className="flex">
               <span className="bg-purple-600 rounded-full p-1 w-2 h-2 text-sm flex justify-center items-center mt-2"></span>
@@ -272,7 +264,7 @@ const Todo = () => {
             {taskData.map((task, index) => (
               <section className="bg-white rounded-lg p-4 mt-4" key={index}>
                 <section className="flex flex-row justify-between">
-                  <p className={`text-${task.priority === 'low' ? 'yellow' : 'red'}-500 bg-${task.priority === 'low' ? 'yellow' : 'red'}-100 text-sm rounded capitalize py-1 px-2`}>
+                  <p className={`text-${task.priority === 'low' ? 'yellow' : 'green'}-500 bg-${task.priority === 'low' ? 'yellow' : 'green'}-100 text-sm rounded capitalize py-1 px-2`}>
                     {task.priority}
                   </p>
                   <div className="relative inline-block text-left">

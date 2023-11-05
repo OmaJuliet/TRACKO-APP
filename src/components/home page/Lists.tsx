@@ -7,10 +7,11 @@ const Lists = () => {
     
     return (
         <>
-         <section className="pl-24 pr-8 fixed mb-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+         {/* <section className="pl-24 pr-8 fixed mb-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6"> */}
+         <section className="pl-6 lg:pl-24 msm:pl-0 lg:fixed mb-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4">
             <Todo />
-            <InProgress />
-            <Done />
+            {/* <InProgress />
+            <Done /> */}
          </section>
         </>
     )

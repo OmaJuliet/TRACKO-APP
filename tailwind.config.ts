@@ -22,6 +22,14 @@ const config: Config = {
           min: "530px",
           max: "542px",
         },
+        msm: {
+          min: "765px",
+          max: "820px",
+        },
+        mmm: {
+          min: "911px",
+          max: "915px",
+        },
         sxl: {
           min: "1022px",
           max: "1025px",

@@ -64,8 +64,8 @@ const ChatBox = () => {
       <Sidebar />
       <Header />
       <main className="container mx-auto flex justify-center lg:pl-60">
-          <section className="flex flex-col h-screen w-full">
-            <div className="flex-grow p-4">
+          <section className="flex flex-col lg:h-screen h-fit w-full">
+            <div className="flex-grow lg:p-4 p-2">
               {messages?.map((message) => (
                 <Message key={message.id} message={message} />
               ))}

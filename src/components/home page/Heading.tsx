@@ -58,34 +58,14 @@ const Heading = () => {
   }, [authUser]);
 
 
-
-  // const appName = useSelector((state: RootState) => state.app.appName);
-  // const handleEditIconClick = () => {
-  //   setIsEditing(true);
-  // };
-
-  // const handleAppNameChange = (e: { target: { value: string; }; }) => {
-  //   dispatch(setAppName(e.target.value));
-  //   localStorage.setItem('appName', e.target.value);
-  // };
-
-  // const handleInputBlur = () => {
-  //   setIsEditing(false);
-  // };
-
-  // useEffect(() => {
-  //   const storedAppName = localStorage.getItem('appName');
-  //   if (storedAppName) {
-  //     dispatch(setAppName(storedAppName));
-  //   }
-  // }, [dispatch]);
-
-
   return (
     <>
-      <section className="container pt-8 mx-auto pl-24 pr-8">
+      {/* <section className="container pt-8 mx-auto pl-24 pr-8">
         <section className="flex flex-row justify-between">
-          <section className="flex">
+          <section className="flex"> */}
+      <section className="lg:block hidden container pt-4 mx-auto lg:pl-24 lg:pr-8">
+        <section className="flex lg:flex-row flex-col justify-between">
+          <section className="flex flex-wrap relative lg:pl-0 ">
             <h1 className="text-3xl font-medium">Tracko App</h1>
             <Image
               src="../Assets/Icons/pen.svg"
@@ -103,7 +83,7 @@ const Heading = () => {
             />
           </section>
 
-          <section>
+          <section className="lg:pt-0 pt-4 ">
             <section className="flex">
               <Image
                 src="../Assets/Icons/plus.svg"
@@ -127,6 +107,43 @@ const Heading = () => {
               ))}
 
               <div className="ml-1 p-1 text-red-500">+2</div>
+            </section>
+          </section>
+        </section>
+      </section>
+
+
+      {/* mobile navigation */}
+      <section className="lg:hidden block container pt-2 px-6 mx-auto msm:pl-0 msm:pr-12 mmm:pr-16">
+        <section className="flex lg:flex-row flex-col justify-between">
+          <section className="lg:pt-0 pt-4 ">
+            <section className="flex justify-between msm:justify-between">
+              <section className="flex">
+                <Image
+                  src="../Assets/Icons/plus.svg"
+                  className="w-8 h-8 rounded-full cursor-pointer"
+                  width={24}
+                  height={24}
+                  alt="plus icon"
+                />
+                <p className="font-medium text-base text-purple-600 ml-1 mt-2 cursor-pointer">Invite</p>
+              </section>
+
+              <section className="flex flex-row">
+                {users.map((user) => (
+                  <Image
+                    key={user.id}
+                    src={user.avatar}
+                    alt={`${user.name}'s avatar`}
+                    title={user.name}
+                    width={24}
+                    height={24}
+                    className="w-8 h-8 rounded-full mr-1"
+                  />
+                ))}
+                <div className="p-1 text-red-500">+2</div>
+              </section>
+
             </section>
           </section>
         </section>

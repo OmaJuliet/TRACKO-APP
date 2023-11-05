@@ -35,7 +35,7 @@ const Page = () => {
       <Sidebar />
       <Header />
       <div className="w-full container mx-auto flex flex-col justify-center bg-gray-200 rounded">
-        <div className="my-4 lg:ml-44 lg:px-16 flex flex-row justify-between">
+        <div className="my-4 lg:ml-44 px-0 lg:px-16 flex lg:flex-row flex-col justify-between">
           <button
             className={`px-4 py-2 rounded-lg mx-2 text-center hover:text-purple-500 focus:text-purple-600 underline ${activeTab === "accounts" && "active text-purple-500 text-lg"}`}
             onClick={() => handleTabChange("accounts")}
@@ -61,8 +61,8 @@ const Page = () => {
             Help & Support
           </button>
         </div>
-        <div className="settings-content">{renderSettingsContent()}</div>
       </div>
+      <div className="settings-content">{renderSettingsContent()}</div>
     </>
   )
 }

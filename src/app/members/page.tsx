@@ -8,7 +8,7 @@ const page = () => {
     <>
       <Sidebar />
       <Header />
-      <section className="container mx-auto flex justify-center lg:pl-32">
+      <section className="container mx-auto flex justify-center lg:pl-32 fixed">
         <TableData />
       </section>
     </>

@@ -18,9 +18,9 @@ type TableProps = {
 const Members: React.FC<TableProps> = ({ data }) => {
   return (
     <>
-      <section className="container px-2 mx-auto lg:pl-36 pt-6 pb-5">
-      <h2 className="text-xl mb-4 text-gray-700 flex justify-center font-medium">Team Members</h2>
-        <table className="table-auto w-full border-separate border-spacing-y-2">
+      <section className="container px-2 mx-auto lg:pl-36 msm:pl-6 mmm:pl-3 pl-0 pt-6 pb-5">
+        <h2 className="text-xl mb-4 text-gray-700 flex justify-center font-medium">Team Members</h2>
+        <table className="table-auto w-full border-separate border-spacing-y-2 overflow-auto">
           <thead className="mb-1">
             <tr className="text-gray-600">
               <th className="py-3 px-6 font-medium text-left uppercase">name</th>
