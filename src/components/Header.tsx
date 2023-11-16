@@ -120,6 +120,7 @@ function Header() {
 
     return (
         <>
+            {/* desktop size */}
             <section className="lg:flex hidden flex lg:justify-between items-center p-6 w-full lg:pl-24 pl-1 overflow-hidden bg-white top-0 z-50 border-b-2">
                 <section className="ml-44">
                     <input type="text" className="bg-gray-100 p-2 rounded outline-none" placeholder="Search for anything" />
@@ -223,9 +224,9 @@ function Header() {
 
 
             {/* mobile navigation */}
-            <section className="bg-white top-0 z-50 border-b-2 lg:hidden block px-4 py-3 sticky w-full msm:px-12 mmm:px-16">
+            <section className="bg-white top-0 z-50 border-b-2 lg:hidden block px-4 py-3 sticky w-full msm:px-6 mmm:px-5">
                 <section className="flex flex-row justify-between pt-1">
-                    <figure className="flex pb-4">
+                    <figure className="flex">
                         <Image
                             src="../Assets/Icons/logo.svg"
                             className=""
@@ -240,7 +241,7 @@ function Header() {
                     </section> */}
                 </section>
 
-                <section className="mr-2 flex mt-4 mss:justify-between msm:justify-between mmm:justify-between">
+                <section className="mr-2 flex mt-2 mss:justify-between msm:justify-between mmm:justify-between">
                     <figure className="flex flex-row items-center mr-12 relative">
                         <div className="relative inline-block">
                             <Image
@@ -318,7 +319,7 @@ function Header() {
                                 onClick={toggleUserDropdown}
                             />
                             {isUserDropdownOpen && (
-                                <section className="absolute z-50 right-8 top-32 w-32 bg-white border border-gray-300 rounded-md shadow-lg">
+                                <section className="absolute z-50 right-8 top-24 w-32 bg-white border border-gray-300 rounded-md shadow-lg">
                                     <ul className="py-4">
                                         <Link href="/settings">
                                             <li className="px-6 py-2 hover:bg-gray-100 cursor-pointer">Profile</li>

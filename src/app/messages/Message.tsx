@@ -30,17 +30,12 @@ const Message = ({ message }: MessageProps) => {
         <section className={messageClass}>
             <section className="message-content">
                 <section className="message-details">
-                    {/* <img
-                        className="avatar"
-                        src={message.avatar}
-                        alt="user avatar"
-                    /> */}
                     <Image 
                         src={message.avatar}
                         width={28}
                         height={28}
                         className="avatar"
-                        alt="User avatar"
+                        alt={message.name}
                     />
                     <div className="message-text">
                         <p className="name">{message.name}</p>

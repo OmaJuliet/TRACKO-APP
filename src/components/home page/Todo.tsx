@@ -114,6 +114,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editin
                 type="text"
                 id="title"
                 name="title"
+                required
                 className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500"
                 value={taskTitle}
                 onChange={(e: ChangeEvent<HTMLInputElement>) => setTaskTitle(e.target.value)}
@@ -128,6 +129,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editin
               <textarea
                 id="details"
                 name="details"
+                required
                 className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500"
                 value={taskDetail}
                 onChange={(e) => setTaskDetail(e.target.value)}
@@ -142,6 +144,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editin
                 type="text"
                 id="member"
                 name="member"
+                required
                 className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500"
                 value={taskMember}
                 onChange={(e) => setTaskMember(e.target.value)}
@@ -157,6 +160,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, handleTaskSubmit, editin
                 type="date"
                 id="dueDate"
                 name="dueDate"
+                required
                 className="w-full px-3 py-2 border-2 border-purple-300 rounded focus:outline-none focus:border-purple-500"
                 value={taskDueDate ? new Date(taskDueDate).toISOString().split('T')[0] : ''}
                 onChange={(e) => setTaskDueDate(e.target.value ? new Date(e.target.value) : null)}

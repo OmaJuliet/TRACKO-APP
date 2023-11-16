@@ -42,10 +42,7 @@ const ChatBox = () => {
       QuerySnapshot.forEach((doc) => {
         fetchedMessages.push({ ...doc.data(), id: doc.id } as MessageData);
       });
-      // const sortedMessages = fetchedMessages.sort(
-      //   (a, b) => a.createdAt - b.createdAt
-      // );
-
+      
       const sortedMessages = fetchedMessages.sort((a, b) => {
         const aMillis = a.createdAt ? a.createdAt.toMillis() : 0; 
         const bMillis = b.createdAt ? b.createdAt.toMillis() : 0; 
@@ -64,7 +61,7 @@ const ChatBox = () => {
       <Sidebar />
       <Header />
       <main className="container mx-auto flex justify-center lg:pl-60">
-          <section className="flex flex-col lg:h-screen h-fit w-full">
+          <section className="flex flex-col h-screen w-full"> {/* h-fit */}
             <div className="flex-grow lg:p-4 p-2">
               {messages?.map((message) => (
                 <Message key={message.id} message={message} />

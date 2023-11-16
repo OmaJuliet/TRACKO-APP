@@ -23,7 +23,6 @@
 }
 
 .message-details {
-  /* background-color: #f1f0f0; */
   background-color: rgb(243 244 246);
   display: flex;
   align-items: flex-start;
@@ -49,8 +48,6 @@
 }
 
 .text {
-  /* background-color: #f1f0f0; */
-  /* padding: 8px; */
   border-radius: 8px;
   max-width: 500px;
   word-wrap: break-word;

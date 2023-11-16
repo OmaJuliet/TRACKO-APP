@@ -1,12 +1,10 @@
 # PROJECT DOCUMENTATION
 
 # TRACKO: PROJECT MANAGEMENT WEB APPLICATION
-### This is a desktop web application.
-
 
 ## About The Project 
 
-This is a project management DESKTOP web application. It is NOT optimized for mobile view yet. 
+This is a project management web application. The mobile view is still a work in progress. 
 
 
 ## Web App UI
@@ -20,7 +18,7 @@ This is a project management DESKTOP web application. It is NOT optimized for mo
 - Tailwindcss for styling
 - Firebase for Authentication and Real-time Dataabase Storage
 - Redux for State Management
-- LocalStorage to store and fetch data from the profile settings
+- LocalStorage to store and fetch data from the tasks list
 - Other libraries: React-icons, React-toastify- React-modal, and React-datepicker
 
 
@@ -28,9 +26,9 @@ This is a project management DESKTOP web application. It is NOT optimized for mo
 
 - Signup or Login functionality with Firebase.
 - Home page where tasks can be viewed, added and assigned to members, edited and deleted. The header containing some features like 'View events' and 'Set events' can be used by team members to view and set events or meetings for members.
-- Chat Roomw: This is a messaging feature powered by Firebase. Members of a team can send messages in this chat room and anyone in logged in member of the team can reply just like a 'WhatsApp' group.
+- Chat Room: This is a messaging feature powered by Firebase. Members of a team can send messages in this chat room and anyone in logged in member of the team can reply just like a 'WhatsApp' group.
 - Tasks page: Featires hasn't been implemented yet.
-- Memebers page: Featires hasn't been implemented yet.
+- Members page: Featires hasn't been implemented yet.
 - Settings page to configure the application. This page is divided into 4 sections. 
    - Account settings to enable users set their account details.
    - Profile settings section consisting of a form for users to update their profile. This update can be viewed fully in profile page(/profile)
@@ -49,7 +47,7 @@ This is a project management DESKTOP web application. It is NOT optimized for mo
 
 
 ## App Links 
-Production Link: ()
+Production Link: (https://tracko-app.vercel.app/)
 
 Project Github Repo Link: (https://github.com/OmaJuliet/TRACKO-APP.git)
 
