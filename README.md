@@ -8,7 +8,7 @@ This is a project management web application. The mobile view is still a work in
 
 
 ## Web App UI
-![Tracko UI](tracko.jpg) 
+![Tracko UI](tracko.png) 
 
 
 ## Technologies Used
